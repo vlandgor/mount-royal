@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Game/GameView.uss?fileID=7433441132597879392&amp;guid=c613839a3ed323f409afd9db474fb9d9&amp;type=3#GameView" />
+    <ui:VisualElement name="GameScreen" style="flex-grow: 0; height: 1080px;">
+        <ui:VisualElement name="visual" style="flex-grow: 0; bottom: 0; height: 1080px; max-height: none;">
+            <ui:Label tabindex="-1" text="Immersion" parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 560px; align-self: center; font-size: 56px; color: rgb(255, 255, 255); -unity-text-align: middle-center; top: 168px; -unity-font-style: bold;" />
+            <ui:ProgressBar value="22" focusable="false" name="ImmersionValue" style="width: 560px; justify-content: flex-start; align-self: center; top: 196px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

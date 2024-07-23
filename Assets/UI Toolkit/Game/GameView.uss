@@ -1,0 +1,17 @@
+.unity-progress-bar{
+    height: 40px;
+    border-radius: 10px;
+}
+
+.unity-progress-bar__container{
+    min-height: 40px;
+    border-radius: 10px;
+}
+
+.unity-progress-bar__background{
+    border-radius: 20px;
+}
+
+.unity-progress-bar__progress{
+    border-radius: 20px;
+}
