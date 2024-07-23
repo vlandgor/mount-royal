@@ -2,6 +2,7 @@
 /* Written by Kaz Crowe */
 using UnityEngine;
 using System.Collections;
+using Third_Party_Assets.Tank___Healer_Studio.Ultimate_Joystick.Scripts;
 using UnityEngine.UI;
 
 namespace UltimateJoystickExample.Spaceship

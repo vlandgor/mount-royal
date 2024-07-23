@@ -1,26 +1,30 @@
 ﻿/* UltimateJoystickScreenSizeUpdater.cs */
 /* Written by Kaz Crowe */
-using UnityEngine;
+
 using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UltimateJoystickScreenSizeUpdater : UIBehaviour
+namespace Third_Party_Assets.Tank___Healer_Studio.Ultimate_Joystick.Scripts
 {
-	protected override void OnRectTransformDimensionsChange ()
+	public class UltimateJoystickScreenSizeUpdater : UIBehaviour
 	{
-		if( gameObject == null || !gameObject.activeInHierarchy )
-			return;
+		protected override void OnRectTransformDimensionsChange ()
+		{
+			if( gameObject == null || !gameObject.activeInHierarchy )
+				return;
 
-		StartCoroutine( "YieldPositioning" );
-	}
+			StartCoroutine( "YieldPositioning" );
+		}
 
-	IEnumerator YieldPositioning ()
-	{
-		yield return new WaitForEndOfFrame();
+		IEnumerator YieldPositioning ()
+		{
+			yield return new WaitForEndOfFrame();
 
-		UltimateJoystick[] allJoysticks = FindObjectsOfType( typeof( UltimateJoystick ) ) as UltimateJoystick[];
+			UltimateJoystick[] allJoysticks = FindObjectsOfType( typeof( UltimateJoystick ) ) as UltimateJoystick[];
 
-		for( int i = 0; i < allJoysticks.Length; i++ )
-			allJoysticks[ i ].UpdatePositioning();
+			for( int i = 0; i < allJoysticks.Length; i++ )
+				allJoysticks[ i ].UpdatePositioning();
+		}
 	}
 }

@@ -1,5 +1,7 @@
 ﻿/* PlayerController.cs */
 /* Written by Kaz Crowe */
+
+using Third_Party_Assets.Tank___Healer_Studio.Ultimate_Joystick.Scripts;
 using UnityEngine;
 
 namespace UltimateJoystickExample.Spaceship

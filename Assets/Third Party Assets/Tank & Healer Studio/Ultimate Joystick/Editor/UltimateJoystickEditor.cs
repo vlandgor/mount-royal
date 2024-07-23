@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using Third_Party_Assets.Tank___Healer_Studio.Ultimate_Joystick.Scripts;
 
 //[CanEditMultipleObjects]
 [CustomEditor( typeof( UltimateJoystick ) )]
