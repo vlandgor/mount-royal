@@ -11,9 +11,8 @@ namespace Core.UI.Puzzle
 {
     public class PuzzleParameterOptionsPanel : MonoBehaviour
     {
-        public event Action<string> OnOptionSelected;
+        public event Action<Enum> OnOptionSelected;
 
-        [Space] 
         [SerializeField] private TMP_Text parameterName;
         [SerializeField] private OptionItemVisual optionItemVisualPrefab;
         [SerializeField] private Button backButton;
@@ -21,16 +20,31 @@ namespace Core.UI.Puzzle
         [Space]
         [SerializeField] private Transform optionsPanelParent;
 
-        private List<ParameterItemVisual> optionsItemsVisual = new();
+        private List<OptionItemVisual> optionsItemsVisual = new();
 
-        public void ShowOptions()
+        public void ShowOptions(Type enumParameter)
         {
+            ClearOptions();
             
+            if (enumParameter.IsEnum)
+            {
+                var enumValues = Enum.GetValues(enumParameter);
+                foreach (var value in enumValues)
+                {
+                    OptionItemVisual optionItemVisual = Instantiate(optionItemVisualPrefab, optionsPanelParent);
+                    optionItemVisual.SetItem((Enum)value);
+                    optionItemVisual.OnOptionSelected += HandleOptionSelected;
+                    optionsItemsVisual.Add(optionItemVisual);
+                }
+            }
         }
 
         public void ClearOptions()
         {
-            foreach (var optionItem in optionsItemsVisual)
+            if (optionsItemsVisual == null)
+                return;
+            
+            foreach (OptionItemVisual optionItem in optionsItemsVisual)
             {
                 optionItem.OnOptionSelected -= HandleOptionSelected;
                 Destroy(optionItem.gameObject);
@@ -38,9 +52,9 @@ namespace Core.UI.Puzzle
             optionsItemsVisual.Clear();
         }
 
-        private void HandleOptionSelected(string optionName)
+        private void HandleOptionSelected(Enum option)
         {
-            OnOptionSelected?.Invoke(optionName);
+            OnOptionSelected?.Invoke(option);
         }
     }
 }

@@ -13,8 +13,7 @@ namespace Core.UI
 
         private async void Start()
         {
-            await UniTask.WaitForSeconds(1f);
-            ShowHousePuzzleScreen("House1");
+            
         }
 
         public void ShowHousePuzzleScreen(string houseId)

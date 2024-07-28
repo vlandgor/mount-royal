@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Puzzle.Parameters;
+using Core.UI;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Utilities;
@@ -16,6 +17,7 @@ namespace Core.Puzzle
         private async void Start()
         {
             await LoadPuzzleProgress();
+            UIManager.Instance.ShowHousePuzzleScreen("House1");
         }
 
         private async UniTask LoadPuzzleProgress()
@@ -37,9 +39,29 @@ namespace Core.Puzzle
             }
         }
 
-        public void UpdateProgress(string houseId, string parameter, string option)
+        public void UpdateProgress(string houseId, Enum value)
         {
-            
+            if (puzzleProgress.TryGetValue(houseId, out HouseParameters parameters))
+            {
+                switch (value)
+                {
+                    case OwnerParameter owner:
+                        parameters.owner = owner;
+                        break;
+                    case DrinkParameter drink:
+                        parameters.drink = drink;
+                        break;
+                    case PetParameter pet:
+                        parameters.pet = pet;
+                        break;
+                }
+
+                PuzzleProgressSaver.SavePuzzle(puzzleProgress);
+            }
+            else
+            {
+                Debug.LogWarning($"No house parameters found for {houseId}");
+            }
         }
     }
 }

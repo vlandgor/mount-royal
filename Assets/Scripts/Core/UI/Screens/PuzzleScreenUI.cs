@@ -18,13 +18,13 @@ namespace Core.UI.Screens
 
         private void Start()
         {
-            houseParametersPanel.OnParameterOptionPressed += HandleParameterOptionPressed;
+            houseParametersPanel.OnParameterOptionPressed += HandleParameterPressed;
             parameterOptionsPanel.OnOptionSelected += HandleOptionSelected;
         }
 
         private void OnDestroy()
         {
-            houseParametersPanel.OnParameterOptionPressed -= HandleParameterOptionPressed;
+            houseParametersPanel.OnParameterOptionPressed -= HandleParameterPressed;
             parameterOptionsPanel.OnOptionSelected -= HandleOptionSelected;
         }
 
@@ -40,17 +40,18 @@ namespace Core.UI.Screens
             }
         }
 
-        private void HandleParameterOptionPressed(string parameterName)
+        private void HandleParameterPressed(Type parameter)
         {
-            parameterOptionsPanel.ShowOptions();
+            parameterOptionsPanel.ShowOptions(parameter);
             
             houseParametersPanel.gameObject.SetActive(false);
             parameterOptionsPanel.gameObject.SetActive(true);
         }
         
-        private void HandleOptionSelected(string optionName)
+        private void HandleOptionSelected(Enum option)
         {
-            //PuzzleManager.Instance.UpdateProgress(activeHouseId, optionValue);
+            PuzzleManager.Instance.UpdateProgress(activeHouseId, option);
+            ShowHouseParameters(activeHouseId);
             
             parameterOptionsPanel.gameObject.SetActive(false);
             houseParametersPanel.gameObject.SetActive(true);

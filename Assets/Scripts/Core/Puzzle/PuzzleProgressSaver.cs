@@ -140,13 +140,13 @@ namespace Core.Puzzle
     public class HouseParameters
     {
         [JsonConverter(typeof(StringEnumConverter))]
-        public OwnerParameter? owner;
+        public OwnerParameter owner;
         
         [JsonConverter(typeof(StringEnumConverter))]
-        public DrinkParameter? drink;
+        public DrinkParameter drink;
         
         [JsonConverter(typeof(StringEnumConverter))]
-        public PetParameter? pet;
+        public PetParameter pet;
 
         public HouseParameters()
         {

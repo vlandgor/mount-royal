@@ -601,8 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2116052ae93514ba1636f2bf4d80ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameterItemVisualPrefab: {fileID: 1285012393818081818, guid: 64a9138d09f42624eafb5f79324b9a22,
+  parameterName: {fileID: 141278807}
+  optionItemVisualPrefab: {fileID: 6014575026862318310, guid: d67e5b3c264564b45b970e5949e2a11c,
     type: 3}
+  backButton: {fileID: 1288770308}
   optionsPanelParent: {fileID: 1782791228}
 --- !u!1 &209619812
 GameObject:

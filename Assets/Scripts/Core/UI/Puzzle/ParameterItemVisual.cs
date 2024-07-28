@@ -7,14 +7,14 @@ namespace Core.UI.Puzzle
 {
     public class ParameterItemVisual : MonoBehaviour
     {
-        public event Action<string> OnOptionSelected;
+        public event Action<Type> OnParameterSelected;
         
         [SerializeField] private TMP_Text parameterText;
         [SerializeField] private TMP_Text optionText;
         
         [SerializeField] private Button optionButton;
 
-        private string parameterName;
+        private Type parameter;
 
         private void Start()
         {
@@ -26,17 +26,24 @@ namespace Core.UI.Puzzle
             optionButton.onClick.RemoveListener(HandleOptionButtonPressed);
         }
 
-        public void SetItem(string parameterName, string optionName)
+        public void SetItem(Type parameter, Enum option)
         {
-            this.parameterName = parameterName;
+            this.parameter = parameter;
             
+            string parameterName = parameter.Name;
+            if (parameterName.EndsWith("Parameter"))
+            {
+                parameterName = parameterName.Substring(0, parameterName.Length - "Parameter".Length);
+            }
+
             parameterText.text = parameterName;
-            optionText.text = optionName;
+            
+            optionText.text = Enum.GetName(parameter, option);
         }
 
         private void HandleOptionButtonPressed()
         {
-            OnOptionSelected?.Invoke(parameterName);
+            OnParameterSelected?.Invoke(parameter);
         }
     }
 }

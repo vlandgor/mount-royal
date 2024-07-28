@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Core.Puzzle;
+using Core.Puzzle.Parameters;
 using Core.UI.Puzzle;
 using TMPro;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Core.UI
 {
     public class PuzzleHouseParametersPanel : MonoBehaviour
     {
-        public event Action<string> OnParameterOptionPressed;
+        public event Action<Type> OnParameterOptionPressed;
 
         [SerializeField] private TMP_Text houseName;
         [SerializeField] private ParameterItemVisual parameterItemVisualPrefab;
@@ -25,37 +26,48 @@ namespace Core.UI
 
         public void ShowParameters(HouseParameters houseParameters)
         {
-            ParameterItemVisual parameterItemVisualOwner = Instantiate(parameterItemVisualPrefab, parametersPanelParent);
-            parameterItemVisualOwner.SetItem("Owner", houseParameters.owner.ToString());
-            parameterItemsVisual.Add(parameterItemVisualOwner);
-            
-            ParameterItemVisual parameterItemVisualDrink = Instantiate(parameterItemVisualPrefab, parametersPanelParent);
-            parameterItemVisualDrink.SetItem("Drink", houseParameters.drink.ToString());
-            parameterItemsVisual.Add(parameterItemVisualDrink);
-            
-            ParameterItemVisual parameterItemVisualPet = Instantiate(parameterItemVisualPrefab, parametersPanelParent);
-            parameterItemVisualPet.SetItem("Pet", houseParameters.pet.ToString());
-            parameterItemsVisual.Add(parameterItemVisualPet);
+            ClearParameters();
+
+            Type houseParametersType = typeof(HouseParameters);
+            FieldInfo[] fields = houseParametersType.GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (FieldInfo field in fields)
+            {
+                if (field.FieldType.IsEnum)
+                {
+                    Enum enumValue = (Enum)field.GetValue(houseParameters);
+                    ParameterItemVisual parameterItemVisual = Instantiate(parameterItemVisualPrefab, parametersPanelParent);
+                    parameterItemVisual.SetItem(field.FieldType, enumValue);
+                    parameterItemsVisual.Add(parameterItemVisual);
+                }
+                else
+                {
+                    Debug.Log($"{field.Name} is not an Enum");
+                }
+            }
 
             foreach (ParameterItemVisual parameterItem in parameterItemsVisual)
             {
-                parameterItem.OnOptionSelected += HandleOptionSelected;
+                parameterItem.OnParameterSelected += HandleParameterSelected;
             }
         }
 
         public void ClearParameters()
         {
-            foreach (var parameterItem in parameterItemsVisual)
+            if(parameterItemsVisual == null)
+                return;
+            
+            foreach (ParameterItemVisual parameterItem in parameterItemsVisual)
             {
-                parameterItem.OnOptionSelected -= HandleOptionSelected;
+                parameterItem.OnParameterSelected -= HandleParameterSelected;
                 Destroy(parameterItem.gameObject);
             }
             parameterItemsVisual.Clear();
         }
 
-        private void HandleOptionSelected(string parameterName)
+        private void HandleParameterSelected(Type parameter)
         {
-            OnParameterOptionPressed?.Invoke(parameterName);
+            OnParameterOptionPressed?.Invoke(parameter);
         }
     }
 }

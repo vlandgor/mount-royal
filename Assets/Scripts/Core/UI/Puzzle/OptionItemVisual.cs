@@ -7,36 +7,31 @@ namespace Core.UI.Puzzle
 {
     public class OptionItemVisual : MonoBehaviour
     {
-        public event Action<string> OnOptionSelected;
+        public event Action<Enum> OnOptionSelected;
         
-        [SerializeField] private TMP_Text parameterText;
         [SerializeField] private TMP_Text optionText;
-        
         [SerializeField] private Button optionButton;
 
-        private string parameterName;
+        private Enum option;
 
         private void Start()
         {
             optionButton.onClick.AddListener(HandleOptionButtonPressed);
         }
-
         private void OnDestroy()
         {
             optionButton.onClick.RemoveListener(HandleOptionButtonPressed);
         }
 
-        public void SetItem(string parameterName, string optionName)
+        public void SetItem(Enum option)
         {
-            this.parameterName = parameterName;
-            
-            parameterText.text = parameterName;
-            optionText.text = optionName;
+            this.option = option;
+            optionText.text = option.ToString();
         }
 
         private void HandleOptionButtonPressed()
         {
-            OnOptionSelected?.Invoke(parameterName);
+            OnOptionSelected?.Invoke(option);
         }
     }
 }
