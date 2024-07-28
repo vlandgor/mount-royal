@@ -1,0 +1,24 @@
+{
+  "keys": [
+    "House1",
+    "House2",
+    "House3"
+  ],
+  "values": [
+    {
+      "owner": "Select",
+      "drink": "Beer",
+      "pet": "Select"
+    },
+    {
+      "owner": "Select",
+      "drink": "Select",
+      "pet": "Select"
+    },
+    {
+      "owner": "Select",
+      "drink": "Select",
+      "pet": "Select"
+    }
+  ]
+}

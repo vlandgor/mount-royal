@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UiToolkit/Game/GameView.uss?fileID=7433441132597879392&amp;guid=c613839a3ed323f409afd9db474fb9d9&amp;type=3#GameView" />
+    <ui:VisualElement name="GameScreen" picking-mode="Ignore" style="flex-grow: 0; height: 100%; width: 100%; visibility: visible; overflow: hidden; opacity: 1;">
+        <ui:VisualElement name="GameView" style="flex-grow: 0; height: 1080px; display: flex; overflow: visible; visibility: visible;">
+            <ui:VisualElement name="visual" style="flex-grow: 0; bottom: 0; height: 1080px; max-height: none;">
+                <ui:Label tabindex="-1" text="Immersion" parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 560px; align-self: center; font-size: 56px; color: rgb(255, 255, 255); -unity-text-align: middle-center; top: 168px; -unity-font-style: bold;" />
+                <ui:ProgressBar value="22" focusable="false" name="ImmersionValue" style="width: 560px; justify-content: flex-start; align-self: center; top: 196px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="HintView" style="flex-grow: 1; display: none;">
+            <ui:VisualElement name="visual" style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 1; justify-content: center;">
+                    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 392px; width: 840px; align-self: center; justify-content: flex-start; align-items: center; top: auto; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; background-color: rgba(0, 0, 0, 0.28); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 14px; padding-right: 14px; padding-bottom: 14px; padding-left: 14px; font-size: 28px; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; height: 560px; justify-content: center;">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 140px; align-self: center; justify-content: center; align-items: center; height: 140px; border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-left-radius: 100%; border-top-right-radius: 100%; border-bottom-right-radius: 100%; border-bottom-left-radius: 100%; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); background-color: rgb(243, 130, 130);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

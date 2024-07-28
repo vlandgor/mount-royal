@@ -1,0 +1,18 @@
+{
+    "houses": [
+        {
+            "color": "Red",
+            "nationality": "British",
+            "drink": "Tea",
+            "cigarette": "Pall Mall",
+            "pet": "Dog"
+        },
+        {
+            "color": "Red",
+            "nationality": "British",
+            "drink": "Tea",
+            "cigarette": "Pall Mall",
+            "pet": "Dog"
+        }
+    ]
+}
