@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6937e27a7172468bbf621edd178303fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 33b05edcf0b84be88fa4655ba16ab143, type: 3}
   m_Name: RedHouseData
   m_EditorClassIdentifier: 
-  owner: Bob
-  drink: Beer
-  pet: Snake
+  id: House1
+  owner: 1
+  drink: 2
+  pet: 3

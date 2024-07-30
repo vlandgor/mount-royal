@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Core.Puzzle.Parameters;
+using UnityEngine;
 
 namespace Core.Puzzle
 {
@@ -7,8 +8,9 @@ namespace Core.Puzzle
     {
         public string id;
         
-        public string owner;
-        public string drink;
-        public string pet;
+        [Space]
+        public OwnerParameter owner;
+        public DrinkParameter drink;
+        public PetParameter pet;
     }
 }

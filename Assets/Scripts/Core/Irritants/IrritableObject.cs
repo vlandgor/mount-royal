@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 
 namespace Core.Irritants
 {
-    public class Irritant : MonoBehaviour
+    public class IrritableObject : MonoBehaviour
     {
         [SerializeField] private float weight;
 
