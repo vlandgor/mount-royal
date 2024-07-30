@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Core.Puzzle;
-using Core.Puzzle.Parameters;
-using Core.Riddle;
 using Core.UI.Puzzle;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Core.UI.Screens
 {
@@ -19,13 +15,19 @@ namespace Core.UI.Screens
         private void Start()
         {
             houseParametersPanel.OnParameterOptionPressed += HandleParameterPressed;
+            houseParametersPanel.OnBackButtonPressed += HandleParameterBackButtonPressed;
+            
             parameterOptionsPanel.OnOptionSelected += HandleOptionSelected;
+            parameterOptionsPanel.OnBackButtonPressed += HandleOptionBackButtonPressed;
         }
 
         private void OnDestroy()
         {
             houseParametersPanel.OnParameterOptionPressed -= HandleParameterPressed;
+            houseParametersPanel.OnBackButtonPressed -= HandleParameterBackButtonPressed;
+            
             parameterOptionsPanel.OnOptionSelected -= HandleOptionSelected;
+            parameterOptionsPanel.OnBackButtonPressed -= HandleOptionBackButtonPressed;
         }
 
         public void ShowHouseParameters(string houseId)
@@ -38,6 +40,9 @@ namespace Core.UI.Screens
             {
                 houseParametersPanel.ShowParameters(parameters);
             }
+            
+            parameterOptionsPanel.gameObject.SetActive(false);
+            houseParametersPanel.gameObject.SetActive(true);
         }
 
         private void HandleParameterPressed(Type parameter)
@@ -55,6 +60,22 @@ namespace Core.UI.Screens
             
             parameterOptionsPanel.gameObject.SetActive(false);
             houseParametersPanel.gameObject.SetActive(true);
+        }
+        
+        private void HandleParameterBackButtonPressed()
+        {
+            UIManager.Instance.ShowGameScreen();
+        }
+        
+        private void HandleOptionBackButtonPressed()
+        {
+            if (activeHouseId == null)
+            {
+                return;
+            }
+            Debug.Log(activeHouseId);
+            
+            ShowHouseParameters(activeHouseId);
         }
     }
 }

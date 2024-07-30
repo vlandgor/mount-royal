@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Core.Puzzle;
-using Core.Riddle;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Core.UI.Puzzle
@@ -12,6 +9,7 @@ namespace Core.UI.Puzzle
     public class PuzzleParameterOptionsPanel : MonoBehaviour
     {
         public event Action<Enum> OnOptionSelected;
+        public event Action OnBackButtonPressed;
 
         [SerializeField] private TMP_Text parameterName;
         [SerializeField] private OptionItemVisual optionItemVisualPrefab;
@@ -22,6 +20,16 @@ namespace Core.UI.Puzzle
 
         private List<OptionItemVisual> optionsItemsVisual = new();
 
+        private void Start()
+        {
+            backButton.onClick.AddListener(HandleBackButtonPressed);
+        }
+
+        private void OnDestroy()
+        {
+            backButton.onClick.RemoveListener(HandleBackButtonPressed);
+        }
+        
         public void ShowOptions(Type enumParameter)
         {
             ClearOptions();
@@ -55,6 +63,11 @@ namespace Core.UI.Puzzle
         private void HandleOptionSelected(Enum option)
         {
             OnOptionSelected?.Invoke(option);
+        }
+        
+        private void HandleBackButtonPressed()
+        {
+            OnBackButtonPressed?.Invoke();
         }
     }
 }

@@ -2,18 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Core.Puzzle;
-using Core.Puzzle.Parameters;
-using Core.UI.Puzzle;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Core.UI
+namespace Core.UI.Puzzle
 {
     public class PuzzleHouseParametersPanel : MonoBehaviour
     {
         public event Action<Type> OnParameterOptionPressed;
+        public event Action OnBackButtonPressed;
 
         [SerializeField] private TMP_Text houseName;
         [SerializeField] private ParameterItemVisual parameterItemVisualPrefab;
@@ -23,6 +21,16 @@ namespace Core.UI
         [SerializeField] private Transform parametersPanelParent;
 
         private List<ParameterItemVisual> parameterItemsVisual = new();
+
+        private void Start()
+        {
+            backButton.onClick.AddListener(HandleBackButtonPressed);
+        }
+
+        private void OnDestroy()
+        {
+            backButton.onClick.RemoveListener(HandleBackButtonPressed);
+        }
 
         public void ShowParameters(HouseParameters houseParameters)
         {
@@ -52,7 +60,7 @@ namespace Core.UI
             }
         }
 
-        public void ClearParameters()
+        private void ClearParameters()
         {
             if(parameterItemsVisual == null)
                 return;
@@ -68,6 +76,11 @@ namespace Core.UI
         private void HandleParameterSelected(Type parameter)
         {
             OnParameterOptionPressed?.Invoke(parameter);
+        }
+        
+        private void HandleBackButtonPressed()
+        {
+            OnBackButtonPressed?.Invoke();
         }
     }
 }

@@ -6,9 +6,9 @@
   ],
   "values": [
     {
-      "owner": "Select",
+      "owner": "Owner2",
       "drink": "Beer",
-      "pet": "Cat"
+      "pet": "Bird"
     },
     {
       "owner": "Select",

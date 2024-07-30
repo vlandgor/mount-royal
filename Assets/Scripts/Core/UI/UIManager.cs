@@ -16,9 +16,25 @@ namespace Core.UI
             
         }
 
+        public void ShowGameScreen()
+        {
+            HideScreens();
+
+            gameScreenUI.SetEnabled(true);
+        }
+
         public void ShowHousePuzzleScreen(string houseId)
         {
+            HideScreens();
+            
+            puzzleScreenUI.SetEnabled(true);
             puzzleScreenUI.ShowHouseParameters(houseId);
+        }
+
+        private void HideScreens()
+        {
+            gameScreenUI.SetEnabled(false);
+            puzzleScreenUI.SetEnabled(false);
         }
     }
 }
