@@ -11,11 +11,6 @@ namespace Core.UI
         [SerializeField] private GameScreenUI gameScreenUI;
         [SerializeField] private PuzzleScreenUI puzzleScreenUI;
 
-        private async void Start()
-        {
-            
-        }
-
         public void ShowGameScreen()
         {
             HideScreens();
