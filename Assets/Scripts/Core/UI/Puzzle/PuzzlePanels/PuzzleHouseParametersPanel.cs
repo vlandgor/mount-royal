@@ -6,31 +6,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Core.UI.Puzzle
+namespace Core.UI.Puzzle.PuzzlePanels
 {
-    public class PuzzleHouseParametersPanel : MonoBehaviour
+    public class PuzzleHouseParametersPanel : PuzzlePanel
     {
         public event Action<Type> OnParameterOptionPressed;
-        public event Action OnBackButtonPressed;
 
         [SerializeField] private TMP_Text houseName;
         [SerializeField] private ParameterItemVisual parameterItemVisualPrefab;
-        [SerializeField] private Button backButton;
-        
+
         [Space]
         [SerializeField] private Transform parametersPanelParent;
 
         private List<ParameterItemVisual> parameterItemsVisual = new();
-
-        private void Start()
-        {
-            backButton.onClick.AddListener(HandleBackButtonPressed);
-        }
-
-        private void OnDestroy()
-        {
-            backButton.onClick.RemoveListener(HandleBackButtonPressed);
-        }
 
         public void ShowParameters(HouseParameters houseParameters)
         {
@@ -76,11 +64,6 @@ namespace Core.UI.Puzzle
         private void HandleParameterSelected(Type parameter)
         {
             OnParameterOptionPressed?.Invoke(parameter);
-        }
-        
-        private void HandleBackButtonPressed()
-        {
-            OnBackButtonPressed?.Invoke();
         }
     }
 }

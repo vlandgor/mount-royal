@@ -4,31 +4,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Core.UI.Puzzle
+namespace Core.UI.Puzzle.PuzzlePanels
 {
-    public class PuzzleParameterOptionsPanel : MonoBehaviour
+    public class PuzzleParameterOptionsPanel : PuzzlePanel
     {
         public event Action<Enum> OnOptionSelected;
-        public event Action OnBackButtonPressed;
 
         [SerializeField] private TMP_Text parameterName;
         [SerializeField] private OptionItemVisual optionItemVisualPrefab;
-        [SerializeField] private Button backButton;
         
         [Space]
         [SerializeField] private Transform optionsPanelParent;
 
         private List<OptionItemVisual> optionsItemsVisual = new();
 
-        private void Start()
-        {
-            backButton.onClick.AddListener(HandleBackButtonPressed);
-        }
-
-        private void OnDestroy()
-        {
-            backButton.onClick.RemoveListener(HandleBackButtonPressed);
-        }
+        
         
         public void ShowOptions(Type enumParameter)
         {
@@ -63,11 +53,6 @@ namespace Core.UI.Puzzle
         private void HandleOptionSelected(Enum option)
         {
             OnOptionSelected?.Invoke(option);
-        }
-        
-        private void HandleBackButtonPressed()
-        {
-            OnBackButtonPressed?.Invoke();
         }
     }
 }

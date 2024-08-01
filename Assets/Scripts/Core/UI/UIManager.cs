@@ -11,6 +11,11 @@ namespace Core.UI
         [SerializeField] private GameScreenUI gameScreenUI;
         [SerializeField] private PuzzleScreenUI puzzleScreenUI;
 
+        private void Start()
+        {
+            ShowGameScreen();
+        }
+
         public void ShowGameScreen()
         {
             HideScreens();
@@ -24,6 +29,14 @@ namespace Core.UI
             
             puzzleScreenUI.SetEnabled(true);
             puzzleScreenUI.ShowHouseParameters(houseId);
+        }
+
+        public void ShowHintPuzzleScreen(string hint)
+        {
+            HideScreens();
+            
+            puzzleScreenUI.SetEnabled(true);
+            puzzleScreenUI.ShowHint(hint);
         }
 
         private void HideScreens()

@@ -17,7 +17,6 @@ namespace Core.Puzzle
         private async void Start()
         {
             await LoadPuzzleProgress();
-            UIManager.Instance.ShowHousePuzzleScreen("House1");
         }
 
         private async UniTask LoadPuzzleProgress()

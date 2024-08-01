@@ -1,6 +1,7 @@
 ﻿using System;
 using Core.Puzzle;
 using Core.UI.Puzzle;
+using Core.UI.Puzzle.PuzzlePanels;
 using UnityEngine;
 
 namespace Core.UI.Screens
@@ -9,6 +10,7 @@ namespace Core.UI.Screens
     {
         [SerializeField] private PuzzleHouseParametersPanel houseParametersPanel;
         [SerializeField] private PuzzleParameterOptionsPanel parameterOptionsPanel;
+        [SerializeField] private PuzzleHintPanel puzzleHintPanel;
 
         private string activeHouseId;
 
@@ -16,6 +18,7 @@ namespace Core.UI.Screens
         {
             houseParametersPanel.OnParameterOptionPressed += HandleParameterPressed;
             houseParametersPanel.OnBackButtonPressed += HandleParameterBackButtonPressed;
+            puzzleHintPanel.OnBackButtonPressed += HandleHintBackButtonPressed;
             
             parameterOptionsPanel.OnOptionSelected += HandleOptionSelected;
             parameterOptionsPanel.OnBackButtonPressed += HandleOptionBackButtonPressed;
@@ -25,13 +28,24 @@ namespace Core.UI.Screens
         {
             houseParametersPanel.OnParameterOptionPressed -= HandleParameterPressed;
             houseParametersPanel.OnBackButtonPressed -= HandleParameterBackButtonPressed;
+            puzzleHintPanel.OnBackButtonPressed -= HandleHintBackButtonPressed;
             
             parameterOptionsPanel.OnOptionSelected -= HandleOptionSelected;
             parameterOptionsPanel.OnBackButtonPressed -= HandleOptionBackButtonPressed;
         }
 
+        public void ShowHint(string hint)
+        {
+            HidePanels();
+            
+            puzzleHintPanel.ShowHint(hint);
+            puzzleHintPanel.gameObject.SetActive(true);
+        }
+        
         public void ShowHouseParameters(string houseId)
         {
+            HidePanels();
+            
             activeHouseId = houseId;
             
             HouseParameters parameters = PuzzleManager.Instance.GetHouseParameters(houseId);
@@ -41,29 +55,32 @@ namespace Core.UI.Screens
                 houseParametersPanel.ShowParameters(parameters);
             }
             
-            parameterOptionsPanel.gameObject.SetActive(false);
             houseParametersPanel.gameObject.SetActive(true);
         }
 
         private void HandleParameterPressed(Type parameter)
         {
+            HidePanels();
+            
             parameterOptionsPanel.ShowOptions(parameter);
             
-            houseParametersPanel.gameObject.SetActive(false);
             parameterOptionsPanel.gameObject.SetActive(true);
         }
         
         private void HandleOptionSelected(Enum option)
         {
+            HidePanels();
+            
             PuzzleManager.Instance.UpdateProgress(activeHouseId, option);
             ShowHouseParameters(activeHouseId);
             
-            parameterOptionsPanel.gameObject.SetActive(false);
             houseParametersPanel.gameObject.SetActive(true);
         }
         
         private void HandleParameterBackButtonPressed()
         {
+            HidePanels();
+            
             UIManager.Instance.ShowGameScreen();
         }
         
@@ -73,9 +90,22 @@ namespace Core.UI.Screens
             {
                 return;
             }
-            Debug.Log(activeHouseId);
             
             ShowHouseParameters(activeHouseId);
+        }
+        
+        private void HandleHintBackButtonPressed()
+        {
+            HidePanels();
+            
+            UIManager.Instance.ShowGameScreen();
+        }
+
+        private void HidePanels()
+        {
+            parameterOptionsPanel.gameObject.SetActive(false);
+            houseParametersPanel.gameObject.SetActive(false);
+            puzzleHintPanel.gameObject.SetActive(false);
         }
     }
 }
