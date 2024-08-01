@@ -9,11 +9,14 @@ namespace Core.Character
         [Header("Components")]
         [SerializeField] private GameObject characterModel;
         [SerializeField] private UltimateJoystick joystick;
-        
+
         [Header("Settings")]
         [SerializeField] private float movementSpeed = 3.0f;
+        [SerializeField] private float gravity = -9.81f;
+        [SerializeField] private float jumpHeight = 2f;
 
         private CharacterController characterController;
+        private Vector3 velocity;
 
         private void OnValidate()
         {
@@ -37,6 +40,23 @@ namespace Core.Character
             {
                 characterModel.transform.rotation = Quaternion.LookRotation(movement);
             }
+
+            // Check if the character is grounded
+            bool isGrounded = characterController.isGrounded;
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f; // Slightly negative value to ensure character sticks to the ground
+            }
+
+            // Jumping
+            if (isGrounded && Input.GetButtonDown("Jump"))
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+
+            // Apply gravity
+            velocity.y += gravity * Time.deltaTime;
+            characterController.Move(velocity * Time.deltaTime);
         }
     }
 }

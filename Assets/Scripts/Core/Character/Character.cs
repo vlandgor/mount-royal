@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Core.Irritants;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -9,6 +11,7 @@ namespace Core.Character
         public event Action OnImmersionLost;
         
         private float irritantWeight;
+        private List<IrritantBlocker> irritantBlockers = new();
 
         public float Immersion { get; private set; } = 100;
         public bool IsPlaying { get; private set; } = true;
@@ -22,8 +25,11 @@ namespace Core.Character
             ProcessImmersion().Forget();
         }
 
-        public void ChangeIrritantWeight(float weight)
+        public void ChangeIrritantWeight(IrritantType irritantType, float weight)
         {
+            if(CheckIrritantForBlocker(irritantType))
+                return;
+            
             irritantWeight += weight;
         }
 
@@ -41,6 +47,17 @@ namespace Core.Character
                 
                 await UniTask.Yield();
             }
+        }
+
+        private bool CheckIrritantForBlocker(IrritantType irritantType)
+        {
+            foreach (IrritantBlocker blocker in irritantBlockers)
+            {
+                if (blocker.IrritantType == irritantType)
+                    return true;
+            }
+
+            return false;
         }
     }
 }
