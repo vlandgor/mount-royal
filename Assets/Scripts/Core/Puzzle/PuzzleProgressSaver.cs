@@ -68,13 +68,17 @@ namespace Core.Puzzle
             return wrapper.ToDictionary();
         }
 
+        public static void ResetProgress()
+        {
+            GeneratePuzzleFile();
+        }
+
         private static void GeneratePuzzleFile()
         {
             Dictionary<string, HouseParameters> initialPuzzleProgress = new()
             {
-                { "House1", new HouseParameters { owner = OwnerParameter.Select, drink = DrinkParameter.Beer, pet = PetParameter.Select } },
-                { "House2", new HouseParameters { owner = OwnerParameter.Select, drink = DrinkParameter.Select, pet = PetParameter.Select } },
-                { "House3", new HouseParameters { owner = OwnerParameter.Select, drink = DrinkParameter.Select, pet = PetParameter.Select } }
+                { "red-house", new HouseParameters { drink = DrinkParameter.Select, pet = PetParameter.Select } },
+                { "blue-house", new HouseParameters { drink = DrinkParameter.Select, pet = PetParameter.Select } }
             };
 
             Debug.Log("Puzzle file was generated");
@@ -88,7 +92,6 @@ namespace Core.Puzzle
             public List<string> keys;
             public List<HouseParameters> values;
 
-            // Default constructor to ensure keys and values are initialized
             public PuzzleProgressWrapper()
             {
                 keys = new List<string>();
@@ -140,9 +143,6 @@ namespace Core.Puzzle
     public class HouseParameters
     {
         [JsonConverter(typeof(StringEnumConverter))]
-        public OwnerParameter owner;
-        
-        [JsonConverter(typeof(StringEnumConverter))]
         public DrinkParameter drink;
         
         [JsonConverter(typeof(StringEnumConverter))]
@@ -150,7 +150,6 @@ namespace Core.Puzzle
 
         public HouseParameters()
         {
-            owner = OwnerParameter.Select;
             drink = DrinkParameter.Select;
             pet = PetParameter.Select;
         }

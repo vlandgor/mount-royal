@@ -374,9 +374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableCollider: {fileID: 4950981173663877672}
+  progressBarBackground: {fileID: 6640037366436391993}
   progressBar: {fileID: 5544037084560127645}
   requiredTime: 2
   unfillSpeed: 2
+  visualColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &9006080401882054081
 GameObject:
   m_ObjectHideFlags: 0

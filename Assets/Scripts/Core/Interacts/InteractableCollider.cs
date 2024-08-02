@@ -12,13 +12,28 @@ namespace Core.Interacts
         public event Action OnInteractionFulfilled;
         
         [SerializeField] private Collider interactableCollider;
+        [SerializeField] private Image progressBarBackground;
         [SerializeField] private Image progressBar;
         
         [Header("Settings")]
         [SerializeField] private float requiredTime = 2f;
         [SerializeField] private float unfillSpeed = 1f;
+        [SerializeField] private Color visualColor;
 
         private CancellationTokenSource cancellationTokenSource;
+
+        private void OnValidate()
+        {
+            if (progressBarBackground != null)
+            {
+                progressBarBackground.color = visualColor;
+            }
+            
+            if (progressBar != null)
+            {
+                progressBar.color = visualColor;
+            }
+        }
 
         private void OnTriggerEnter(Collider other)
         {

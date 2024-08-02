@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b05edcf0b84be88fa4655ba16ab143, type: 3}
   m_Name: BlueHouseData
   m_EditorClassIdentifier: 
-  id: House2
-  owner: 2
-  drink: 3
+  id: blue-house
+  drink: 2
   pet: 1

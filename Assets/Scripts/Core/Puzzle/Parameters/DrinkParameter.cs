@@ -3,7 +3,6 @@
     public enum DrinkParameter
     {
         Select,
-        Water,
         Tea,
         Beer
     }

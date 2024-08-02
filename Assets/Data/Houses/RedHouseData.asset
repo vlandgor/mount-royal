@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b05edcf0b84be88fa4655ba16ab143, type: 3}
   m_Name: RedHouseData
   m_EditorClassIdentifier: 
-  id: House1
-  owner: 1
-  drink: 2
-  pet: 3
+  id: red-house
+  drink: 1
+  pet: 2

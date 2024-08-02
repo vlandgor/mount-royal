@@ -1,24 +1,16 @@
 {
   "keys": [
-    "House1",
-    "House2",
-    "House3"
+    "red-house",
+    "blue-house"
   ],
   "values": [
     {
-      "owner": "Owner2",
       "drink": "Tea",
+      "pet": "Bird"
+    },
+    {
+      "drink": "Beer",
       "pet": "Cat"
-    },
-    {
-      "owner": "Select",
-      "drink": "Select",
-      "pet": "Select"
-    },
-    {
-      "owner": "Select",
-      "drink": "Select",
-      "pet": "Select"
     }
   ]
 }

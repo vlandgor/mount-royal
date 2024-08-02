@@ -10,6 +10,8 @@ namespace Core.Puzzle
 {
     public class PuzzleManager : Singleton<PuzzleManager>
     {
+        [SerializeField] private List<PuzzleHouseData> puzzleData = new();
+        
         public bool IsSolved { get; private set; }
 
         private Dictionary<string, HouseParameters> puzzleProgress = new();
@@ -28,7 +30,6 @@ namespace Core.Puzzle
         {
             if (puzzleProgress.TryGetValue(houseId, out HouseParameters parameters))
             {
-                Debug.Log($"House parameters for {houseId}: {parameters.owner}, {parameters.drink}, {parameters.pet}");
                 return parameters;
             }
             else
@@ -44,9 +45,6 @@ namespace Core.Puzzle
             {
                 switch (value)
                 {
-                    case OwnerParameter owner:
-                        parameters.owner = owner;
-                        break;
                     case DrinkParameter drink:
                         parameters.drink = drink;
                         break;
@@ -61,6 +59,30 @@ namespace Core.Puzzle
             {
                 Debug.LogWarning($"No house parameters found for {houseId}");
             }
+        }
+
+        public bool CheckPuzzleCorrectness()
+        {
+            foreach (var houseData in puzzleData)
+            {
+                if (puzzleProgress.TryGetValue(houseData.id, out HouseParameters parameters))
+                {
+                    if (parameters.drink != houseData.drink || parameters.pet != houseData.pet)
+                    {
+                        IsSolved = false;
+                        return false;
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"No house parameters found for {houseData.id}");
+                    IsSolved = false;
+                    return false;
+                }
+            }
+            
+            IsSolved = true;
+            return true;
         }
     }
 }

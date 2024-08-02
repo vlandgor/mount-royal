@@ -4,7 +4,6 @@
     {
         Select,
         Cat,
-        Dog,
         Bird
     }
 }

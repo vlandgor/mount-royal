@@ -1,3 +1,4 @@
 {
-	"name": "editor"
+	"name": "editor",
+	"references":[ "GUID:b7bdcd2ff0402a14d9294b3b17e5ab0c" ]
 }

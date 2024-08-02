@@ -9,7 +9,6 @@ namespace Core.Puzzle
         public string id;
         
         [Space]
-        public OwnerParameter owner;
         public DrinkParameter drink;
         public PetParameter pet;
     }
