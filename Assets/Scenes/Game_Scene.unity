@@ -428,18 +428,6 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 4790816156260293485}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &404661337 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7167715852576105663, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 8309819015545580365}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c94830071d4d649dbccc5485944919, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &473375983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2948,46 +2936,6 @@ PrefabInstance:
     - target: {fileID: 4231096243437105285, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5002649434463966850, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5002649434463966850, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6491631450936516982, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6604088541200677204, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7145936637273789557, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-        type: 3}
-      propertyPath: puzzleHintPanel
-      value: 
-      objectReference: {fileID: 404661337}
-    - target: {fileID: 7916313880146534320, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7916313880146534320, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7916313880146534320, guid: 50c8e9c390ce40f47a4d7b1819e6a5b8,
-        type: 3}
-      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
