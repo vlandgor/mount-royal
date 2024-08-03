@@ -1,4 +1,5 @@
 using System;
+using Core.Irritants;
 using Core.UI.Screens;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -43,6 +44,11 @@ namespace Core.UI
         {
             gameScreenUI.SetEnabled(false);
             puzzleScreenUI.SetEnabled(false);
+        }
+        
+        public void ApplyIrritantEffectChange(bool affected, IrritantType irritantType)
+        {
+            gameScreenUI.ApplyEffectChange(affected, irritantType);
         }
     }
 }

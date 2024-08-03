@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Core.Irritants;
+using Core.UI;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -29,7 +30,8 @@ namespace Core.Character
         {
             if(CheckIrritantForBlocker(irritantType))
                 return;
-            
+
+            UIManager.Instance.ApplyIrritantEffectChange(weight > 0, irritantType);
             irritantWeight += weight;
         }
 

@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7495077056113396062}
+  - component: {fileID: -3653247365984717770}
   m_Layer: 5
-  m_Name: Audio_Effect
+  m_Name: Sound_Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,6 +38,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 98, y: 98}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &-3653247365984717770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395099152719635929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cfaaed6f5cd40348845512f3d5464ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  irritantType: 1
 --- !u!1 &5037173407303558222
 GameObject:
   m_ObjectHideFlags: 0
